@@ -3,6 +3,14 @@
     class="h-[650px] w-96 bg-neutral-200 rounded-3xl shadow-lg border-2 px-5 border-gray-400 overflow-hidden"
   >
     <Title :title="title" />
+    <div class="text-left ml-6">
+      <p class="text-emerald-500 font-bold">
+        {{ data.filter(item => item.complete).length }} Completed
+      </p>
+      <p class="text-rose-500 font-bold">
+        {{ data.filter(item => !item.complete).length }} Remaining
+      </p>
+    </div>
     <div>
       <input
         type="text"
