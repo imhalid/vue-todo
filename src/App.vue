@@ -6,9 +6,9 @@
     <div>
       <input
         type="text"
-        class="w-full flex h-10 px-3 rounded-md outline-none focus:ring-0"
+        class="w-full flex h-10 px-3 rounded-md outline-none focus:ring-0 mt-5"
         placeholder="add item"
-        @keyup.enter="addData"
+        @keyup.enter="addData($event)"
         :value="data.title"
       />
     </div>
@@ -29,7 +29,7 @@
           </button>
         </div>
         <div class="flex-1 text-left text-neutral-900">
-          {{ item.id }}
+          {{ item.title }}
         </div>
         <div class="aspect-square h-10 flex items-center justify-center">
           <button @click="deleteData">
@@ -49,14 +49,14 @@ import Title from './components/Title.vue'
 const data = ref([])
 const title = 'Content'
 
-const toggleComplete = e => {
-  e.complete = !e.complete
+const toggleComplete = event => {
+  event.complete = !event.complete
 }
 
-const addData = () => {
+const addData = event => {
   data.value.push({
     id: new Date().getTime(),
-    title: 'Hello World',
+    title: event.target.value,
     complete: false,
   })
 }
